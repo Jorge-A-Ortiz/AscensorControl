@@ -11,7 +11,6 @@ El simulador permite seleccionar pisos, mostrar el piso y la dirección, animar 
 ## Requisitos
 
 - Windows 10 u 11 de 64 bits y conexión a internet para la instalación y la primera compilación.
-- Una cuenta de GitHub con acceso al repositorio: actualmente es privado.
 - [Git para Windows](https://git-scm.com/install/windows), instalado en la ruta predeterminada `C:\Program Files\Git`.
 - [MSYS2](https://www.msys2.org/), instalado en la ruta predeterminada `C:\msys64`.
 - GCC, CMake y Ninja instalados dentro de MSYS2 UCRT64, como se explica abajo.
@@ -25,7 +24,6 @@ No es necesario descargar SDL2 ni LVGL por separado: CMake descarga las versione
 
 1. Descarga el instalador desde [Git para Windows](https://git-scm.com/install/windows).
 2. Ejecútalo y sigue el asistente. Conserva la ruta predeterminada `C:\Program Files\Git`.
-3. Deja habilitado Git Credential Manager si el instalador lo ofrece: facilita iniciar sesión en GitHub al clonar el repositorio privado.
 
 ### 2. Instalar MSYS2 y las herramientas de C
 
@@ -57,7 +55,7 @@ git clone https://github.com/Jorge-A-Ortiz/AscensorControl.git
 cd AscensorControl
 ```
 
-Si Git solicita iniciar sesión, utiliza una cuenta de GitHub que tenga acceso al repositorio. También puedes descargar el ZIP desde GitHub y extraerlo, siempre que tengas acceso; Git sigue siendo necesario para descargar las dependencias durante la primera configuración.
+También puedes descargar el ZIP desde GitHub con **Code → Download ZIP** y extraerlo. Git sigue siendo necesario para descargar las dependencias durante la primera configuración.
 
 ### 4. Compilar y ejecutar
 
@@ -89,7 +87,7 @@ La espera previa al movimiento configurada en el simulador es de 7,5 segundos. A
 ## Solución de problemas
 
 - **`cmake`, `ninja` o el compilador no se encuentran:** confirma que MSYS2 esté en `C:\msys64` y que los tres paquetes UCRT64 del paso 2 terminaron de instalarse.
-- **No se puede descargar o clonar:** comprueba la conexión a internet y que Git esté en `C:\Program Files\Git`. Para clonar este repositorio privado, verifica también que la cuenta autenticada tenga acceso.
+- **No se puede descargar o clonar:** comprueba la conexión a internet y que Git esté en `C:\Program Files\Git`.
 - **`Permission denied` al compilar `simulador-emergencia-enclavada.exe`:** cierra cualquier ventana del simulador que siga abierta y vuelve a ejecutar la tarea.
 - **La ventana abre sin sonido:** comprueba la salida y el volumen de audio de Windows. El archivo de sonido está en `assets/llegada-ascensor.wav`.
 - **La configuración de `build` quedó dañada o pertenece a otra ubicación:** cierra el simulador, elimina únicamente la carpeta `build` del proyecto y vuelve a ejecutar el script para configurarla de nuevo.
