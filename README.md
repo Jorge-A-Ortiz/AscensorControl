@@ -96,7 +96,21 @@ La espera previa al movimiento configurada en el simulador es de 7,5 segundos. A
 
 - `src/ui.c`: interfaz y comportamiento simulado.
 - `src/platform_audio.c`: reproducción de audio en Windows mediante SDL2.
-- `src/esp32p4_gpio.h`: asignación de GPIO prevista para una futura versión ESP-IDF; no está conectada a la simulación.
+- `src/esp32p4_gpio.h`: mapeo del cableado de pantalla para la futura versión ESP-IDF.
 - `assets/`: fondo y sonido utilizados.
 - `docs/simulador.png`: captura del simulador.
 - `CMakeLists.txt` y `lv_conf.h`: compilación y configuración de LVGL.
+
+## Mapeo de la pantalla ESP32-P4
+
+| Función | GPIO de pantalla | Señal |
+| --- | ---: | --- |
+| Solicitud de piso 1 | 52 | Entrada X000 del PLC |
+| Solicitud de piso 2 | 51 | Entrada X001 del PLC |
+| Solicitud de piso 3 | 50 | Entrada X002 del PLC |
+| Emergencia | 49 | Entrada X006 del PLC |
+| Indicador de piso 1 | 2 | Entrada de la pantalla |
+| Indicador de piso 2 | 3 | Entrada de la pantalla |
+| Indicador de piso 3 | 4 | Entrada de la pantalla |
+
+La pantalla solicita un piso y el Ladder decide el sentido comparando el destino con el piso detectado. Los límites y el interbloqueo de movimiento corresponden al PLC. El mapeo queda registrado para ESP-IDF. El ejecutable actual es el simulador de Windows.
